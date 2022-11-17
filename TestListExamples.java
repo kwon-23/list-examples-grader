@@ -6,9 +6,16 @@ import org.junit.*;
 
 import java.util.*;
 
+interface StringChecker { boolean checkString(String s); }
+
 public class TestListExamples {
   @Test
   public void testFilter() {
+    StringChecker st = new StringChecker() {
+      public boolean checkString(String s) {
+        return true;
+      }
+    };
     List<String> input1 = new ArrayList<String>();
     input1.add("first");
     input1.add("second");
@@ -18,7 +25,7 @@ public class TestListExamples {
       add("second");
       add("first");
     }};
-    assertArrayEquals(output, ListExamples.filter(input1));
+    assertEquals(output, ListExamples.filter(input1, st));
   }
 
   @Test
@@ -37,6 +44,6 @@ public class TestListExamples {
       add("c");
       add("d");
     }};
-    assertArrayEquals(output, ListExamples.merge(input, input2));
+    assertEquals(output, ListExamples.merge(input, input2));
   }
 }

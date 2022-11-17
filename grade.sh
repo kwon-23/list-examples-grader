@@ -18,11 +18,10 @@ cd ..
 set +e
 javac -cp $CPATH TestListExamples.java ListExamples.java
 
-if [[ ! $? -eq 0 ]]
+if [[ $? -eq 0 ]]
 then 
     echo "Compilation of code failed."
     exit
 fi
 
 java -cp $CPATH org.junit.runner.JUnitCore TestListExamples > out.txt
-[[ $? -eq 0 ]] && echo "All tests ran successfully."
