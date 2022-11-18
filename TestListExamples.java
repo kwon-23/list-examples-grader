@@ -28,7 +28,7 @@ public class TestListExamples {
     assertEquals(output, ListExamples.filter(input1, st));
   }
 
-  @Test
+  @Test (timeout = 100)
   public void testMerge() {
     List<String> input = new ArrayList<String>() {{
       add("a");
